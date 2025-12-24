@@ -54,8 +54,9 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);GFX_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp23</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Includes;$(SolutionDir)Resources;$(SolutionDir)src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Includes;$(SolutionDir)Resources;$(SolutionDir)src;$(SolutionDir)src</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>6294;26495;26498;26800;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -73,6 +74,9 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GFX_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>;$(SolutionDir)src</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>/wd6294;/wd26495;/wd26498;/wd26800;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <LanguageStandard>stdcpp23</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -81,24 +85,43 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Includes\Glad\glad.c" />
-    <ClCompile Include="src\Log.cpp" />
-    <ClCompile Include="src\OpenGLContext.cpp" />
+    <ClCompile Include="src\GFX_APIs\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\GFX_APIs\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\GFX_APIs\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\GFX_APIs\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Core\Log.cpp" />
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\Win32Window.cpp" />
-    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\Platform\Win32Window.cpp" />
+    <ClCompile Include="src\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\Glad\glad.h" />
     <ClInclude Include="Includes\Glad\khrplatform.h" />
-    <ClInclude Include="src\ApplicationEvent.h" />
-    <ClInclude Include="src\Base.h" />
-    <ClInclude Include="src\Event.h" />
-    <ClInclude Include="src\KeyEvent.h" />
-    <ClInclude Include="src\Log.h" />
-    <ClInclude Include="src\MouseEvent.h" />
-    <ClInclude Include="src\OpenGLContext.h" />
-    <ClInclude Include="src\Win32Window.h" />
-    <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\Core\Input.h" />
+    <ClInclude Include="src\GFX_APIs\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\GFX_APIs\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\GFX_APIs\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\GFX_APIs\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Renderer\Renderer.h" />
+    <ClInclude Include="src\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Renderer\Buffer.h" />
+    <ClInclude Include="src\Event\ApplicationEvent.h" />
+    <ClInclude Include="src\Core\Base.h" />
+    <ClInclude Include="src\Event\Event.h" />
+    <ClInclude Include="src\Renderer\GfxContext.h" />
+    <ClInclude Include="src\Event\KeyEvent.h" />
+    <ClInclude Include="src\Core\Log.h" />
+    <ClInclude Include="src\Event\MouseEvent.h" />
+    <ClInclude Include="src\Platform\Win32Window.h" />
+    <ClInclude Include="src\Core\Window.h" />
+    <ClInclude Include="src\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Renderer\Shader.h" />
+    <ClInclude Include="src\Renderer\VertexArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

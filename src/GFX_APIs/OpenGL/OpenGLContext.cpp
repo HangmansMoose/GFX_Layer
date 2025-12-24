@@ -1,9 +1,8 @@
 #include "OpenGLContext.h"
 #include "Core/Base.h"
 
-#include <GLFW/glfw3.h>
 #include <glad/glad.h>
-#include <GL/GL.h>
+#include <GLFW/glfw3.h>
 
 OpenGLContext::OpenGLContext(GLFWwindow* windowHandle)
 	: m_WindowHandle(windowHandle)
@@ -18,9 +17,9 @@ void OpenGLContext::Init()
 	GFX_ASSERT(status, "Failed to initialize Glad!");
 
 	GFX_INFO("OpenGL Info:");
-	GFX_INFO("  Vendor: {0}", glGetString(GL_VENDOR));
-	GFX_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
-	GFX_INFO("  Version: {0}", glGetString(GL_VERSION));
+	GFX_INFO("  Vendor: {0}",	fmt::ptr(glGetString(GL_VENDOR)));
+	GFX_INFO("  Renderer: {0}", fmt::ptr(glGetString(GL_RENDERER)));
+	GFX_INFO("  Version: {0}",  fmt::ptr(glGetString(GL_VERSION)));
 
 }
 

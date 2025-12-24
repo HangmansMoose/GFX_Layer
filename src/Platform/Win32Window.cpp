@@ -1,16 +1,16 @@
 #include "Win32Window.h"
+
 #include "Event/ApplicationEvent.h"
 #include "Event/MouseEvent.h"
 #include "Event/KeyEvent.h"
-#include "Core/Base.h"
-#include "Core/Log.h"
 
+#include "GFX_APIs/OpenGL/OpenGLContext.h"
 
 static bool s_GLFWInitialized = false;
 
 static void GLFWErrorCallback(int error, const char* description)
 {
-	// TODO: Error Handling
+	GFX_ERROR("GLFW Error ({0}): {1}", error, description);
 }
 
 Window* Window::Create(const WindowProps& props)
@@ -46,9 +46,10 @@ void WindowsWindow::Init(const WindowProps& props)
 	}
 
 	m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-	glfwMakeContextCurrent(m_Window);
-	int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-	GFX_ASSERT(status, "Failed to initialize Glad!");
+
+	m_Context = new OpenGLContext(m_Window);
+	m_Context->Init();
+
 	glfwSetWindowUserPointer(m_Window, &m_Data);
 	SetVSync(true);
 
@@ -151,7 +152,7 @@ void WindowsWindow::Shutdown()
 void WindowsWindow::OnUpdate()
 {
 	glfwPollEvents();
-	glfwSwapBuffers(m_Window);
+	m_Context->SwapBuffers();
 }
 
 void WindowsWindow::SetVSync(bool enabled)
@@ -168,4 +169,3 @@ bool WindowsWindow::IsVSync() const
 {
 	return m_Data.VSync;
 }
-

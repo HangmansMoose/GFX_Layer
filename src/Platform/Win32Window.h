@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core/Window.h"
+#include "Renderer/GfxContext.h"
 #include <Glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -26,6 +27,7 @@ private:
 	virtual void Shutdown();
 private:
 	GLFWwindow* m_Window;
+	GfxContext* m_Context;
 
 	struct WindowData
 	{

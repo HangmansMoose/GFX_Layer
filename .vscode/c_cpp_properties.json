@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "compilerPath":"C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.50.35207\\bin\\Hostx64\\x64\\cl.exe" ,
+      "includePath":["G:/dev/Gfx_layer/src", "G:/dev/Gfx_layer/Includes", "G:/dev/Gfx_layer/Resources"],
+      "intelliSenseMode": "windows-msvc-x64"
+    }
+  ],
+  "version": 4
+}
