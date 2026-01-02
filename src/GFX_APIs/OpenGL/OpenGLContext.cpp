@@ -16,10 +16,11 @@ void OpenGLContext::Init()
 	int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 	GFX_ASSERT(status, "Failed to initialize Glad!");
 
+
 	GFX_INFO("OpenGL Info:");
-	GFX_INFO("  Vendor: {0}",	fmt::ptr(glGetString(GL_VENDOR)));
-	GFX_INFO("  Renderer: {0}", fmt::ptr(glGetString(GL_RENDERER)));
-	GFX_INFO("  Version: {0}",  fmt::ptr(glGetString(GL_VERSION)));
+	GFX_INFO("  Vendor: {0}",	(char*)glGetString(GL_VENDOR));
+	GFX_INFO("  Renderer: {0}", (char*)glGetString(GL_RENDERER));
+	GFX_INFO("  Version: {0}",  (char*)glGetString(GL_VERSION));
 
 }
 
